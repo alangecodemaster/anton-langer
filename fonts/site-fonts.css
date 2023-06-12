@@ -4,8 +4,8 @@
   font-style: normal;
   font-weight: 300;
   src: local(''),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-300.woff2') format('woff2'),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-300.woff') format('woff');
+       url('/josefin-sans-v25-latin/josefin-sans-v25-latin-300.woff2') format('woff2'),
+       url('/josefin-sans-v25-latin/josefin-sans-v25-latin-300.woff') format('woff');
 }
 /* josefin-sans-regular - latin */
 @font-face {
@@ -13,8 +13,8 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-regular.woff2') format('woff2'),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-regular.woff') format('woff');
+       url('josefin-sans-v25-latin/josefin-sans-v25-latin-regular.woff2') format('woff2'),
+       url('/josefin-sans-v25-latinjosefin-sans-v25-latin-regular.woff') format('woff');
 }
 /* josefin-sans-700 - latin */
 @font-face {
@@ -22,8 +22,8 @@
   font-style: normal;
   font-weight: 700;
   src: local(''),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-700.woff2') format('woff2'),
-       url('/wp-content/themes/custom-theme/fonts/josefin-sans-v25-latin/josefin-sans-v25-latin-700.woff') format('woff');
+       url('/josefin-sans-v25-latin/josefin-sans-v25-latin-700.woff2') format('woff2'),
+       url('/josefin-sans-v25-latin/josefin-sans-v25-latin-700.woff') format('woff');
 }
 /* anton-regular - latin */
 @font-face {
@@ -31,6 +31,6 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('/wp-content/themes/custom-theme/fonts/anton-v23-latin/anton-v23-latin-regular.woff2') format('woff2'),
-       url('/wp-content/themes/custom-theme/fonts/anton-v23-latin/anton-v23-latin-regular.woff') format('woff');
+       url('/anton-v23-latin/anton-v23-latin-regular.woff2') format('woff2'),
+       url('/anton-v23-latin/anton-v23-latin-regular.woff') format('woff');
 }

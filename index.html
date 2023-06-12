@@ -1,0 +1,282 @@
+<style type="text/css">
+
+
+	.home-container{position: absolute; overflow: hidden; height: 100%; width: 100%;}
+
+
+
+	.home-container .menu{position: absolute; z-index: 1000; background: #494545; color: white; width: 50px; border-radius: 500px; left: 20px; top: 20px; max-height: 50px; overflow: hidden; transition: max-height .3s;}
+	.home-container .menu.active{max-height: 350px; overflow: initial;}
+	.home-container .menu-items{margin-top: 2em; margin-bottom: 1em; display: grid; grid-gap: 20px;}
+	.home-container .menu-item{user-select: none; cursor: pointer; width: 150px;}
+	.home-container .menu-item.active, .home-container .menu-item:hover{color: var(--color-1);}
+	.home-container .menu-text{display: inline-block; margin-left: 29px; border-left: 3px solid transparent; line-height: 1.25em; padding-left: 15px;}
+	.home-container .menu-item.active .menu-text{border-color: var(--color-1);}
+	.home-container .menu-item svg{width: 18px; height: auto; fill: #8e8a8a; position: relative; left: 17px; top: 5px;}
+	.home-container .menu-item.active svg,
+	.home-container .menu-item:hover svg{fill: var(--color-1);}
+	.home-container .ham-container{cursor: pointer; height: 50px;}
+	.home-container .ham{display: block; background: white; height: 1px; width: 21px; position: absolute; transform: translateX(-50%); top: 25px; left: 50%;}
+	.home-container .ham:before{content: ''; left: 0; display: block; background: white; width: 100%; height: 1px; position: absolute; top: -4px;}
+	.home-container .ham:after{content:''; left: 0; display: block; background: white; width: 100%; height: 1px; position: absolute; top: 4px;}
+	@media(max-width: 650px){
+		.home-container .menu{left: unset; right: 20px;}
+		.home-container .menu.active .menu-items{position: fixed; top: -40px; left: 0; background: #232323; width: 100%; padding: 20px;}
+		.home-container .menu.active .ham-container{position: relative; z-index: 2;}
+		.home-container .menu.active{max-height: 50px;}
+	}
+
+
+
+
+
+	.home-container > section{position: absolute; left: 0; top: 0; transform: translateX(100%); transform-origin: left center; width: 100%; background-image: radial-gradient(ellipse at 0 0, #333, #111); height: 100%; overflow: scroll; transition-delay: 1s;}
+	.home-container > section.active{transition: transform .5s; transition-delay: 0s; transform: translateX(0); z-index: 1;}
+	
+
+
+
+	.main-head .content-width{display: grid; grid-template-columns: 1fr 1fr; grid-gap: 50px;min-height: 100%;}
+	.main-head .img-container img{display: block;}
+	.main-head .img-container{padding-top: 1em; align-self: flex-end;}
+	.main-head .content{align-self: center; color: white;}
+	.main-head h1{display: inline-block; font-weight: 400; margin: 0; text-transform: uppercase;}
+	.main-head h1 span{color: var(--color-1); margin-left: 18px;}
+	.main-head .i-am{display: inline-block; font-family: var(--heading-font); text-transform: uppercase; font-size: var(--fsize-xl); margin: 0;}
+	.main-head .top-words{margin: 0; font-size: 25px;}
+	@media(max-width: 1050px){
+		.main-head .content-width{grid-gap: 17px;}
+	}
+	@media(min-height: 1300px){
+		.main-head .img-container{padding-top: 0; align-self: center;}
+	}
+	@media(max-width: 750px){
+		.main-head .content-width{display: flex; flex-direction: column; padding-top: 2em;}
+		.main-head .content{order: -1; width: 500px; max-width: 100%; margin: 0 auto;}
+		.main-head .img-container{width: 500px; max-width: 100%; margin: 0 auto;}
+	}
+</style>
+
+<div class="home-container">
+	<div class="menu">
+		<div class="ham-container" onclick="toggleMenu('.menu')"><span class="ham"></span></div>
+		<div class="menu-items">
+			<span class="menu-item home active" onclick="switchActive(this, '.main-head')"><svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 594 562" width="594" height="562"><path fill-rule="evenodd" d="m297.8 0.6c1.2 0.2 8.4 5.9 15.9 12.6 7.6 6.7 17.2 15.1 21.3 18.8 4.1 3.7 18.1 16 31 27.5 12.9 11.4 25.1 22.2 27 23.9 1.9 1.7 7.3 6.5 12 10.6 4.7 4.1 10.3 9.1 12.5 11.1 2.2 2 14.4 12.7 27 23.9 12.6 11.2 24.8 21.9 27 23.9 2.2 2 9.6 8.6 16.5 14.7 6.9 6 24.6 21.8 39.5 34.9 14.9 13.2 32.9 29.1 40 35.5 7.2 6.3 16.1 14.2 19.8 17.5 3.7 3.3 6.7 6.3 6.7 6.8 0 0.4-5.9 7.3-13.1 15.5-7.2 8.1-14.1 15.8-17.8 19.7l-8.3-7.5c-4.6-4.1-10.1-9.1-12.3-11.1-2.2-2-18.2-16.1-35.5-31.5-17.3-15.3-35.6-31.4-40.6-35.8-4.9-4.5-12.4-11.1-16.5-14.7-4.1-3.6-13.7-12.1-21.4-19-7.7-6.8-15.6-13.8-17.5-15.5-1.9-1.7-10-8.9-18-15.9-8-7-16.3-14.4-18.5-16.4-2.2-2-7.8-7-12.5-11.1-4.7-4.1-10.1-8.9-12-10.6-1.9-1.7-14.4-12.9-52-46.4l-2.8 2.1c-1.5 1.2-11.4 9.8-22.1 19.2-10.7 9.5-19.9 17.7-20.5 18.2-0.6 0.6-6.7 6-13.6 12.1-6.9 6.1-27.1 24-45 39.9-17.9 15.8-35.6 31.5-39.5 34.9-3.8 3.3-9.4 8.4-12.5 11.1-3.1 2.8-8.9 8-13 11.6-4.1 3.6-12 10.6-17.5 15.5-5.6 4.9-13.4 11.8-17.5 15.4-4.1 3.6-9.9 8.8-13 11.5-3 2.8-8.7 7.8-12.5 11.1-3.9 3.4-13.8 12.1-37 32.7l-4-4.5c-2.2-2.5-8.9-10.1-15-16.9-6-6.8-11.3-12.6-11.8-12.9-0.4-0.3 4.7-5.5 11.5-11.6 6.8-6 24.2-21.6 38.8-34.5 14.6-12.9 38.2-33.8 52.5-46.4 14.3-12.6 26.2-23.2 26.5-23.5 0.3-0.3 4.3-3.9 9-8 4.7-4.1 10.1-8.9 12-10.6 1.9-1.7 14.1-12.5 27-23.9 12.9-11.5 26.6-23.6 30.5-27 3.9-3.4 17.8-15.8 31-27.5 13.2-11.7 27.1-24 30.9-27.4 3.8-3.4 11-9.8 16-14.3 6.9-6.2 9.6-8 11.3-7.7zm-208.7 36.4h75l-0.1 17.3c-0.1 9.4-0.4 19.7-0.8 22.8-0.6 5.5-0.8 5.9-7.6 11.9-3.9 3.5-9.3 8.4-12 10.9-2.8 2.6-14.2 12.9-25.5 23-11.3 10.2-22.4 20.3-29 26.6zm209.9 65.2c0.8 0.7 3.4 2.9 5.6 4.9 2.2 2 14.5 13 27.5 24.4 12.9 11.4 25.1 22.2 27 23.9 1.9 1.7 7.3 6.5 12 10.6 4.6 4.1 10 8.9 12 10.6 1.9 1.7 14.3 12.7 27.5 24.4 13.2 11.7 27.3 24.2 31.4 27.9 4.2 3.6 10 8.8 13.1 11.6 3.1 2.7 14.5 12.9 25.5 22.6 11 9.6 21.2 18.6 25.5 22.4l-0.1 269-7.7 7.5h-135.2v-59.3c-0.1-45-0.4-59.8-1.3-61.7-0.7-1.3-2.8-3.5-8.2-7.1l-57 0.3c-55.2 0.3-57.1 0.4-59.7 2.3-1.5 1.1-3.2 3-3.8 4.2-0.7 1.6-1 21.7-1 121.3h-67c-57.6 0-67.5-0.2-70-1.5-1.7-0.8-3.7-2.9-4.5-4.5-1.3-2.6-1.5-19.9-1.5-271l3.2-2.6c1.8-1.5 6.4-5.5 10.3-8.9 3.8-3.4 17.5-15.6 30.5-27 12.9-11.4 25.3-22.4 27.5-24.4 2.2-2 7.8-7 12.5-11.1 4.6-4.1 10-8.9 12-10.6 1.9-1.7 10-8.9 18-15.9 7.9-7.1 17.4-15.4 21-18.6 3.5-3.2 7.4-6.6 8.6-7.6 1.1-1 5.4-4.8 9.5-8.4 4-3.7 18.1-16.1 31.3-27.8 20.5-18.1 24.1-20.9 25.5-19.9z"/></svg><span class="menu-text">Home</span></span>
+			<span class="menu-item about" onclick="switchActive(this, '.about-anton')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg><span class="menu-text">About</span></span>
+			<span class="menu-item portfolio" onclick="switchActive(this, '.my-portfolio')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z"/></svg><span class="menu-text">Portfolio</span></span>
+			<span class="menu-item contact" onclick="switchActive(this, '.contact-anton')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M208 352c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176c0 38.6 14.7 74.3 39.6 103.4c-3.5 9.4-8.7 17.7-14.2 24.7c-4.8 6.2-9.7 11-13.3 14.3c-1.8 1.6-3.3 2.9-4.3 3.7c-.5 .4-.9 .7-1.1 .8l-.2 .2 0 0 0 0C1 327.2-1.4 334.4 .8 340.9S9.1 352 16 352c21.8 0 43.8-5.6 62.1-12.5c9.2-3.5 17.8-7.4 25.3-11.4C134.1 343.3 169.8 352 208 352zM448 176c0 112.3-99.1 196.9-216.5 207C255.8 457.4 336.4 512 432 512c38.2 0 73.9-8.7 104.7-23.9c7.5 4 16 7.9 25.2 11.4c18.3 6.9 40.3 12.5 62.1 12.5c6.9 0 13.1-4.5 15.2-11.1c2.1-6.6-.2-13.8-5.8-17.9l0 0 0 0-.2-.2c-.2-.2-.6-.4-1.1-.8c-1-.8-2.5-2-4.3-3.7c-3.6-3.3-8.5-8.1-13.3-14.3c-5.5-7-10.7-15.4-14.2-24.7c24.9-29 39.6-64.7 39.6-103.4c0-92.8-84.9-168.9-192.6-175.5c.4 5.1 .6 10.3 .6 15.5z"/></svg><span class="menu-text">Contact</span></span>
+			<span class="menu-item blog"><a href="https://deconstructingtherhetoric.wordpress.com/" target="_blank"></a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M366.4 18.3L310.7 74.1 435.9 199.3l55.7-55.7c21.9-21.9 21.9-57.3 0-79.2L445.6 18.3c-21.9-21.9-57.3-21.9-79.2 0zM286 94.6l-9.2 2.8L132.7 140.6c-19.9 6-35.7 21.2-42.3 41L1.8 445.8c-3.8 11.3-1 23.9 7.3 32.4L162.7 324.7c-3-6.3-4.7-13.3-4.7-20.7c0-26.5 21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48c-7.4 0-14.4-1.7-20.7-4.7L31.7 500.9c8.6 8.3 21.1 11.2 32.4 7.3l264.3-88.6c19.7-6.6 35-22.4 41-42.3l43.2-144.1 2.8-9.2L286 94.6z"/></svg><span class="menu-text">Blog</span></span>
+		</div>
+	</div>
+
+
+
+
+	<section class="main-head active">
+		<div class="content-width">
+			<div class="img-container">
+				<picture>
+					<!-- <source srcset="" type=""> -->
+					<img src="<?= <?= wp_get_attachment_url(21); ?>" alt="anton sitting smiling" width="680" height="845">
+				</picture>
+			</div>
+
+			<div class="content">
+				<p class="top-words">Hey There!</p>
+				<p class="i-am">I'm</p><h1><span>Anton</span> Langer</h1>
+				<p class="about">I am first and foremost a husband and father of faith, but I am also a web developer by trade. I hail from Wyoming, Nevada, Utah, and Idaho, and I claim each as home, though I currently live in Idaho. My superpowers: I can speak Minion (one dialect of Minion, anyway), and I know how to get a site to in the high 90s to 100 on mobile in Google's Page Speed Insights. Don't believe me? Try it out: <a target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fantonlanger.com%2F" target="_blank">PROVE IT!</a> </p>
+			</div>
+		</div>
+	</section>
+
+
+
+	<style type="text/css">
+		/*about-top section*/
+		.about-anton{color: white;}
+		.about-anton h2, .about-anton .tagline{text-align: center;}
+		.about-anton h2{margin: 0;}
+		.about-anton h2 span{color: var(--color-1);}
+		.about-anton .tagline{font-size: 20px;}
+		.about-anton .image-bio{display: grid; grid-gap: 50px; grid-template-columns: 5fr 6fr; align-items: center; margin-top: 3em;}
+		.about-anton .image-bio img{width: 100%; height: 400px; object-fit: cover; object-position: center top; position: relative; display: block; z-index: 1; background: radial-gradient(#5a5a5a, #181818);}
+		.about-anton .image-bio .image-container{position: relative;}
+		.about-anton .image-bio .image-container:after{content:'';color: white; display: block; position: absolute; left: 5%; top: 5%; border: 5px solid var(--color-1); width: 100%; height: 100%; z-index: 0;}
+		.about-anton .image-bio .bio ul{display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px 50px; list-style: none;}
+		@media(max-width: 1000px){
+			.about-anton h2{font-size: 50px;}
+			.about-anton .image-bio{display: flex; flex-direction: column;}
+			.about-anton .image-bio .image-container{width: 500px; max-width: 85%;}
+			.about-anton .image-bio .bio{width: 500px; max-width: 100%;}
+			.about-anton .image-bio .bio ul{padding: 0;}
+		}
+		@media(max-width: 750px){
+			.about-anton h2{font-size: 40px;}
+		}
+		@media(max-width: 500px){
+			.about-anton .image-bio .image-container img{height: 300px;}
+			.about-anton .image-bio .bio ul{display: block; margin: 1em auto; width: 225px;}
+			.about-anton .image-bio{margin-top: 2em;}
+		}
+
+
+		/*achievements section*/
+		.about-anton .achievements{display: grid; grid-template-columns: 1fr 1fr; grid-gap: 50px; margin-top: 4em; border-top: 1px solid #444; padding-top: 3em;}
+		.about-anton .achievements h2{line-height: 1em; margin: 0 0 2em; font-size: 30px; text-align: left; font-weight: 400; letter-spacing: 2px;}
+		.about-anton .achievements h3{font-weight: 400; letter-spacing: 2px; font-size: 22px; margin: 0; transform: translateY(-10px);}
+		.about-anton .indiv-achieve p{margin: 0;}
+		.about-anton .indiv-achieve{padding: 0 0 3em 1em; border-left: 1px solid var(--color-1); position: relative;}
+		.about-anton .indiv-achieve:before{content:''; left: 0; background: #333; width: 10px; height: 10px; display: block; border: 3px solid var(--color-1); position: absolute; top: 0; transform: translateX(-50%); border-radius: 500px;}
+		.about-anton .indiv-achieve:last-child{padding-bottom: 1em;}
+		@media(max-width: 1000px){
+			.about-anton .achievements{margin-top: 1em;}
+		}
+		@media(max-width: 750px){
+			.about-anton .achievements{display: flex; flex-direction: column;}
+		}
+	</style>
+
+	<section class="about-anton section-padding">
+		<div class="content-width">
+			<h2>About <span>Me</span></h2>
+			<p class="tagline">I Make Cool Things – and I'm Good at It</p>
+
+
+			<div class="image-bio">
+				<div class="image-container">
+					<img data-url="<?= wp_get_attachment_url(18); ?>" width="500" height="500" alt="anton sitting">
+				</div>
+				<div class="bio">
+					<ul>
+						<li>First Name: Anton</li>
+						<li>Work: Web Development</li>
+						<li>Last Name: Langer</li>
+						<li>Experience: 7+ years</li>
+						<li>Faith: Church of Jesus Christ of LDS</li>
+						<li>LinkedIn: <a href="https://www.linkedin.com/in/anton-langer-28b60b76/" target="_blank">Connect / Follow</a></li>
+						<li>Contact: <a href="<?= get_permalink(29); ?>">Reach Me Here</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="achievements">
+				<div class="achievement-list">
+					<h2>Workplace Achievments</h2>
+					<div class="indiv-achieve">
+						<h3>Built AI Social Media Platform</h3>
+						<p>Within a week, I was able to build an entire social media site for a client centered entirely around AI. After launching, the company went directly into a collaboration with IBM to incorporate Watson, IBM's own AI project, into the site.</p>
+					</div>
+					<div class="indiv-achieve">
+						<h3>Page Speed Expert</h3>
+						<p>I am one of the leading developers in the industry to achieve the highest page speed scores in Google's page speed insights tool. I consistently launch new websites with perfect scores, or near perfect scores depending on the dependencies clients want to incorporate in to their sites.</p>
+					</div>
+					<div class="indiv-achieve">
+						<h3>Big Names</h3>
+						<p>In my work, I have been able to develop sites for some big names and nationally renowned people. This includes Keith Sullivan (an attorney and expert legal correspondent for Fox news), Chris Stewart (Mr. Billion Dollar Justice, aka the attorney who represented George Floyd's family in their civil suit), and John Phillips (the attorney who represented the Tiger King). I have worked with many other big clients as well as local business clients.</p>
+					</div>
+
+					
+				</div>
+				<div class="experience">
+					<h2>Experience</h2>
+					<div class="indiv-achieve">
+						<h3>Completely Self-Taught Developer</h3>
+						<p>Everything I have learned as a developer and have accomplished in my career has been completely self-taught. I have had mentors and other incredibly intelligent developers guiding me and helping me along the way, but I have learned almost everything completely on my own from books, tutorials, Youtube, and many other online resources.</p>
+					</div>
+					<div class="indiv-achieve">
+						<h3>Well over 100s of sites</h3>
+						<p>In my career, I have developed hundreds of sites from scratch.</p>
+					</div>
+					<div class="indiv-achieve">
+						<h3>Head of Tech / Development</h3>
+						<p>I currently serve as the lead developer and head of technology in my current company and was lead developer for several years before than in my prior company.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<style type="text/css">
+		.my-portfolio{color: white;}
+		.my-portfolio h2{margin:0;}
+		.my-portfolio h2, .my-portfolio .tagline{text-align: center;}
+		.my-portfolio h2 span{color: var(--color-1);}
+		.my-portfolio .portfolio-container{margin-top: 2em; display: grid; grid-gap: 10px; grid-template-columns: 1fr 1fr 1fr;}
+		.my-portfolio .portfolio-container img{height: 100%; width: 100%; object-fit: cover; object-position: center top;}
+		@media(max-width: 550px){
+			.my-portfolio .portfolio-container{grid-template-columns: 1fr 1fr;}
+		}
+		@media(max-width: 400px){
+			.my-portfolio .portfolio-container{grid-template-columns: 1fr;}
+		}
+	</style>
+
+	<section class="my-portfolio section-padding">
+		<div class="content-width">
+			<h2>My <span>Portfolio</span></h2>
+			<p class="tagline">Just a few (of many) cool sites I've developed freelancing or at my jobs:</p>
+			<div class="portfolio-container">
+				<a href="https://smstrial.com/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(37); ?>" width="500" height="375" alt="sms"></a>
+				<a href="https://floridajustice.com/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(34); ?>" width="500" height="375" alt="john phillips"></a>
+				<a href="https://johnston-lawfirm.com/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(35); ?>" width="500" height="375" alt="johnston law firm"></a>
+				<a href="https://www.joshgreenracing.com/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(36); ?>" width="500" height="375" alt="josh green racing"></a>
+				<a href="https://inwithcorp.com/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(33); ?>" width="500" height="375" alt="inwith corp"></a>
+				<a href="https://christuff.me/" class="indiv-portfolio" target="_blank" rel="nofollow, noindex, noreferrer, noopener"><img data-url="<?= <?= wp_get_attachment_url(32); ?>" width="500" height="375" alt="chris tuff"></a>
+			</div>
+		</div>
+	</section>
+
+
+
+	<style type="text/css">
+		.contact-anton{color: white;}
+		.contact-anton h2{margin:0;}
+		.contact-anton h2, .contact-anton .tagline{text-align: center;}
+		.contact-anton h2 span{color: var(--color-1);}
+		.contact-anton .form-container{width: 750px; max-width: 100%; margin: 0 auto; margin-top: 2em;}
+		.contact-anton fieldset{border: none; padding: 0; margin: 0;}
+		.contact-anton fieldset legend{display: none;}
+		.contact-anton label, .contact-anton input{display: block;}
+		.frm_verify{visibility: hidden; position: absolute; left: -5000000px;}
+		.frm_fields_container{display: grid; grid-gap: 25px;}
+		#frm_desc_field_qh4icy{display: none;}
+		.contact-anton input, .contact-anton textarea, .contact-anton select{width: 100%; background: none; border: none; border-bottom: 1px solid white; border-radius: 0; font-size: 16px; font-family: var(--text-default); padding: 5px; color: white;}
+		.contact-anton button{background: var(--color-1); color: white; font-weight: 400; font-family: var(--heading-font); font-size: 20px; letter-spacing: 1px; padding: 5px 50px; border: 0; text-transform: uppercase; border-radius: 500px; cursor: pointer;}
+
+
+
+	</style>
+
+	<section class="contact-anton section-padding">
+		<div class="content-width">
+			<h2>Contact <span>Me</span></h2>
+			<p class="tagline">Need to get a hold of me? That's cool! Just fill out the form below to get started.</p>
+			<div class="form-container">
+				No form? No worries. I'm still getting things situated on my end.
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+</div><!-- end home container -->
+
+
+<script type="text/javascript">
+	function toggleMenu(menu){
+		document.querySelector(menu).classList.toggle("active");
+	}
+
+	function switchActive(menuItem, controlledClass){
+		document.querySelector(".home-container .menu-item.active").classList.remove("active");
+		document.querySelector(".home-container section.active").classList.remove("active");
+		menuItem.classList.add("active");
+		document.querySelector(controlledClass).classList.add("active");
+
+	}
+</script>
+
